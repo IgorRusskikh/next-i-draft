@@ -1,8 +1,11 @@
+import { IconType } from 'react-icons';
+
 import Button from './Button';
 
 interface Link {
   label: string;
   url: string;
+  icon?: IconType | undefined;
 }
 
 interface SidebarSectionProps {
@@ -38,7 +41,7 @@ const SidebarSection: React.FC<SidebarSectionProps> = ({
       >
         {arrayLinks.map((link) => (
           <li key={link.label}>
-            <Button label={link.label} theme='light' />
+            <Button label={link.label} icon={link?.icon} theme="light" />
           </li>
         ))}
       </ul>

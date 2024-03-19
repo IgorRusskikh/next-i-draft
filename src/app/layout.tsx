@@ -33,7 +33,7 @@ export default function RootLayout({
               justify-center 
               items-center 
               px-10 
-              py-5 
+              py-8
               relative
             "
           >
@@ -41,8 +41,8 @@ export default function RootLayout({
               className="
                 w-full 
                 h-full 
-                py-10
-                px-10
+                py-8
+                px-5
                 z-10 
                 backdrop-blur-md 
                 rounded-3xl

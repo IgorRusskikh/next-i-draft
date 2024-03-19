@@ -1,17 +1,19 @@
-import Image from 'next/image';
+import { IconType } from 'react-icons';
 
 interface ButtonProps {
   label?: string;
-  image?: string;
-  direction?: string;
+  icon?: IconType;
+  justifyContent?: string;
+  rounded?: string;
   border?: boolean;
   theme?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
   label,
-  image,
-  direction = "ltr",
+  icon: Icon,
+  justifyContent,
+  rounded,
   border = false,
   theme = "dark",
 }) => {
@@ -19,14 +21,14 @@ const Button: React.FC<ButtonProps> = ({
     <button
       className={`
         flex
-        w-full
-        rounded-2xl
-        px-5
+        items-center
+        px-4
         py-3
         transition-all
         duration-300
         text-md
         border-1
+        ${rounded ? `${rounded} w-fit` : "rounded-2xl w-full"}
         ${
           theme === "dark"
             ? "bg-[#262626] text-white"
@@ -34,12 +36,10 @@ const Button: React.FC<ButtonProps> = ({
                 border ? "border-black" : "border-transparent"
               }`
         }
-        ${direction === "ltr" ? "" : "flex-row-reverse"}
+        ${justifyContent || ""}
       `}
     >
-      {image && (
-        <Image width={10} height={10} src={image} alt="" className="mr-5" />
-      )}
+      {Icon && <Icon size={18} className={`${label ? "mr-2" : ""}`} />}
       <span>{label}</span>
     </button>
   );
