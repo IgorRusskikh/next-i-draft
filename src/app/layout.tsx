@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import './globals.css';
+
+import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,42 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div
+          className="
+            w-full
+            h-[100vh]
+            bg-[url('/modern-geometrical-wallpaper-with-round-lines.jpg')]   bg-cover
+          "
+        >
+          <div
+            className="
+              w-full 
+              h-full 
+              flex 
+              justify-center 
+              items-center 
+              px-10 
+              py-5 
+              relative
+            "
+          >
+            <div
+              className="
+                w-full 
+                h-full 
+                py-10
+                px-10
+                z-10 
+                backdrop-blur-md 
+                rounded-3xl
+              "
+            >
+              {children}
+            </div>
+          </div>
+        </div>
+      </body>
     </html>
   );
 }
