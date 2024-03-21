@@ -5,7 +5,14 @@ const config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "custom-dark-gray": "#cbcbcb",
+        "custom-gray": "#e2e2e2",
+        "custom-light-gray": "#f0f0f0",
+        "custom-extra-light-gray": "#262626",
+      },
+    },
   },
   plugins: [],
 };

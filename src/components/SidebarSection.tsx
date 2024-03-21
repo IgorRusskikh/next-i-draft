@@ -5,7 +5,7 @@ import Button from './Button';
 interface Link {
   label: string;
   url: string;
-  icon?: IconType | undefined;
+  icon?: IconType;
 }
 
 interface SidebarSectionProps {
@@ -39,9 +39,12 @@ const SidebarSection: React.FC<SidebarSectionProps> = ({
           gap-2
         "
       >
-        {arrayLinks.map((link) => (
-          <li key={link.label}>
-            <Button label={link.label} icon={link?.icon} theme="light" />
+        {arrayLinks.map(({ label, url, icon: Icon }) => (
+          <li key={label}>
+            <Button label={label} theme="light">
+              {Icon && <Icon className='mr-2' size={24} />}
+              <span className='text-lg'>{label}</span>
+            </Button>
           </li>
         ))}
       </ul>

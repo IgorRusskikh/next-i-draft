@@ -42,7 +42,7 @@ const Sidebar: React.FC = () => {
     <div
       className="
         bg-white 
-        w-68
+        w-[18rem]
         h-full 
         rounded-3xl
         flex
@@ -60,32 +60,35 @@ const Sidebar: React.FC = () => {
       >
         <h1
           className="
-            text-3xl 
-            font-medium
+            text-4xl 
+            font-semibold
           "
         >
           iDraft
         </h1>
       </div>
-      <div className="mt-12">
+      <div className="mt-8">
         <div className="px-7">
           <div>
             <SidebarSection arrayLinks={arrayLinks} />
           </div>
-          <div className="mt-8">
+          <div className="mt-6">
             <SidebarSection
               sectionHeader="INTEGRATIONS"
               arrayLinks={arrayLinks.slice(0, 3)}
             />
           </div>
-          <div className="mt-8">
+          <div className="mt-6">
             <SidebarSection
               sectionHeader="INTEGRATIONS"
               arrayLinks={arrayLinks.slice(0, 2)}
             />
           </div>
           <div className="mt-8">
-            <Button label="Setting" theme="light" icon={FiSettings} />
+            <Button label="Setting" theme="light" icon={FiSettings}>
+              <FiSettings className="mr-2" size={24} />
+              <span>Settigns</span>
+            </Button>
           </div>
         </div>
       </div>
