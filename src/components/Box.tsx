@@ -24,7 +24,7 @@ const Box: React.FC<BoxProps> = ({
 }) => {
   return (
     <div
-      className={`w-full h-full rounded-3xl bg-[#262626] px-8 py-7 flex flex-col 
+      className={`w-full h-full rounded-3xl bg-[#262626] px-7 py-6 flex flex-col relative overflow-hidden
       ${theme !== "dark" ? "text-black" : "text-white"}
       ${theme === "light" ? "bg-[#fcfcfc]" : ""} 
       ${theme === "dark" ? "bg-[#262626]" : ""}
@@ -45,7 +45,7 @@ const Box: React.FC<BoxProps> = ({
           {!LabelIcon ? (
             <h1 className={`font-semibold text-3xl w-fit`}>{label}</h1>
           ) : (
-            <LabelIcon />
+            <LabelIcon size={42} />
           )}
           {headerIcons?.length && (
             <div className="flex gap-1">
@@ -65,10 +65,10 @@ const Box: React.FC<BoxProps> = ({
       )}
 
       {/* BOX BODY */}
-      {BoxBody && <div className={`w-full h-full`}>{BoxBody}</div>}
+      {BoxBody && <div className={`w-full h-full relative`}>{BoxBody}</div>}
 
       {/* BOX FOOTER */}
-      {BoxFooter && <div className="w-full h-full">{BoxFooter}</div>}
+      {BoxFooter && <div className="w-full">{BoxFooter}</div>}
     </div>
   );
 };

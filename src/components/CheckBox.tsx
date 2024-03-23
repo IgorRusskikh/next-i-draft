@@ -33,7 +33,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({ optionList }) => {
   };
 
   return (
-    <div className="flex flex-col w-full h-full gap-3 py-5">
+    <div className="flex flex-col w-full h-full gap-7 py-5">
       {checkedOptions.map((option, index) => (
         <div
           key={index}
