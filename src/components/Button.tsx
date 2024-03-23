@@ -3,7 +3,6 @@ import { IconType } from 'react-icons';
 
 interface ButtonProps {
   children: ReactNode;
-  label?: string;
   icon?: IconType;
   justifyContent?: string;
   rounded?: string;
@@ -13,7 +12,6 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({
   children,
-  label,
   icon: Icon,
   justifyContent,
   rounded,

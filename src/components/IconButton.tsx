@@ -19,8 +19,10 @@ const IconButton: React.FC<IconButtonProps> = ({
         h-fit
         w-fit
         transition-all
+        duration-300
+        border
+        border-transparent
         ${bg ? (theme === "light" ? "bg-black" : "bg-white") : ""}
-        hover:${theme === "light" ? "border-white" : "border-black"}
       `}
     >
       {Icon}

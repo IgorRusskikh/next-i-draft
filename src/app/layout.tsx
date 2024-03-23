@@ -47,6 +47,8 @@ export default function RootLayout({
                 backdrop-blur-md 
                 rounded-3xl 
                 select-none
+                border
+              border-white
               "
             >
               {children}

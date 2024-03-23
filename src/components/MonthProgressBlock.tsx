@@ -14,7 +14,7 @@ import IconButton from './IconButton';
 interface MonthProgressBlockProps {}
 
 const MonthProgressBlock: React.FC = () => {
-  const boxBody = (
+  const boxBody: JSX.Element = (
     <div className="flex flex-col">
       <h4 className="w-fit mb-2">
         <span className="font-extrabold">+20%</span> compared to last month*
@@ -77,7 +77,7 @@ const MonthProgressBlock: React.FC = () => {
     </div>
   );
 
-  const boxFooter = (
+  const boxFooter: JSX.Element = (
     <div className="flex justify-between items-center gap-5 mt-1.5 h-full">
       <div className="h-fit">
         <IconButton bg={true} theme="light">

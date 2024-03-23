@@ -16,8 +16,8 @@ const Header: React.FC = () => {
     >
       <h1
         className="
-          text-3xl 
-          font-semibold
+          text-4xl 
+          font-bold
           flex 
           items-end 
           pt-3

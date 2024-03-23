@@ -7,7 +7,7 @@ interface BoxProps {
   label?: string;
   labelIcon?: IconType;
   headerIcons?: IconType[];
-  customBoxHeader?: ReactNode;
+  customBoxHeader?: JSX.Element;
   boxBody?: ReactNode;
   boxFooter?: ReactNode;
   theme?: string;
@@ -35,36 +35,40 @@ const Box: React.FC<BoxProps> = ({
       }`}
     >
       {/* BOX HEADER */}
-      <div
-        className={`w-full flex items-center 
+      {BoxHeader ? (
+        BoxHeader
+      ) : (
+        <div
+          className={`w-full flex items-center 
         ${headerIcons?.length ? "justify-between" : "justify-center"}`}
-      >
-        {!LabelIcon ? (
-          <h1 className={`font-semibold text-3xl w-fit`}>{label}</h1>
-        ) : (
-          <LabelIcon />
-        )}
-        {headerIcons?.length && (
-          <div className="flex gap-1">
-            {headerIcons.map((Icon, index) => (
-              <IconButton key={index}>
-                <Icon
-                  size={32}
-                  color={`${theme === "light" ? "black" : ""} ${
-                    theme === "dark" ? "white" : ""
-                  } ${theme === "transparent" ? "black" : ""}`}
-                />
-              </IconButton>
-            ))}
-          </div>
-        )}
-      </div>
+        >
+          {!LabelIcon ? (
+            <h1 className={`font-semibold text-3xl w-fit`}>{label}</h1>
+          ) : (
+            <LabelIcon />
+          )}
+          {headerIcons?.length && (
+            <div className="flex gap-1">
+              {headerIcons.map((Icon, index) => (
+                <IconButton key={index}>
+                  <Icon
+                    size={32}
+                    color={`${theme === "light" ? "black" : ""} ${
+                      theme === "dark" ? "white" : ""
+                    } ${theme === "transparent" ? "black" : ""}`}
+                  />
+                </IconButton>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* BOX BODY */}
-      <div className={`w-full h-full`}>{BoxBody}</div>
+      {BoxBody && <div className={`w-full h-full`}>{BoxBody}</div>}
 
       {/* BOX FOOTER */}
-      <div className="w-full h-full">{BoxFooter}</div>
+      {BoxFooter && <div className="w-full h-full">{BoxFooter}</div>}
     </div>
   );
 };
