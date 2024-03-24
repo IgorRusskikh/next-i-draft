@@ -11,8 +11,6 @@ import Box from './Box';
 import Button from './Button';
 import IconButton from './IconButton';
 
-interface MonthProgressBlockProps {}
-
 const MonthProgressBlock: React.FC = () => {
   const boxBody: JSX.Element = (
     <div className="flex flex-col">

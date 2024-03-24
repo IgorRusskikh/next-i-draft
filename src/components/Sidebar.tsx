@@ -48,6 +48,7 @@ const Sidebar: React.FC = () => {
         flex
         flex-col
         py-5
+        shadow-xl
       "
     >
       <div
@@ -85,7 +86,7 @@ const Sidebar: React.FC = () => {
             />
           </div>
           <div className="mt-8">
-            <Button label="Setting" theme="light" icon={FiSettings}>
+            <Button theme="light" icon={FiSettings}>
               <FiSettings className="mr-2" size={24} />
               <span>Settigns</span>
             </Button>

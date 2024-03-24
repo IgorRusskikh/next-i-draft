@@ -35,24 +35,10 @@ export default function RootLayout({
               px-10 
               py-6
               relative
+              select-none
             "
           >
-            <div
-              className="
-                w-full 
-                h-full 
-                py-6
-                px-5
-                z-10 
-                backdrop-blur-md 
-                rounded-3xl 
-                select-none
-                border
-              border-white
-              "
-            >
-              {children}
-            </div>
+            {children}
           </div>
         </div>
       </body>

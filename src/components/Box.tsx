@@ -24,7 +24,7 @@ const Box: React.FC<BoxProps> = ({
 }) => {
   return (
     <div
-      className={`w-full h-full rounded-3xl bg-[#262626] px-7 py-6 flex flex-col relative overflow-hidden
+      className={`w-full h-full rounded-3xl bg-[#262626] px-7 py-6 flex flex-col relative overflow-hidden shadow-xl
       ${theme !== "dark" ? "text-black" : "text-white"}
       ${theme === "light" ? "bg-[#fcfcfc]" : ""} 
       ${theme === "dark" ? "bg-[#262626]" : ""}

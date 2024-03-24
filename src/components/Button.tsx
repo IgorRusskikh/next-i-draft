@@ -3,6 +3,7 @@ import { IconType } from 'react-icons';
 
 interface ButtonProps {
   children: ReactNode;
+  onClick?: () => void;
   icon?: IconType;
   justifyContent?: string;
   rounded?: string;
@@ -12,6 +13,7 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({
   children,
+  onClick,
   icon: Icon,
   justifyContent,
   rounded,
@@ -36,10 +38,11 @@ const Button: React.FC<ButtonProps> = ({
         ${
           theme === "dark"
             ? "bg-[#262626] text-white"
-            : `bg-white text-black hover:bg-[#2626265f]`
+            : `bg-white text-black hover:bg-[#262626] hover:text-white`
         }
         ${justifyContent || ""}
       `}
+      onClick={onClick}
     >
       {children}
     </button>

@@ -11,7 +11,7 @@ import Box from './Box';
 interface TaskCardProps {
   icon?: IconType;
   task: string;
-  deadline: Date;
+  deadline: string;
 }
 
 const TaskCard: React.FC<TaskCardProps> = ({ icon, task, deadline }) => {
@@ -19,8 +19,6 @@ const TaskCard: React.FC<TaskCardProps> = ({ icon, task, deadline }) => {
 
   const switchNotification = () => {
     setNotificate(!notificate);
-
-    console.log(notificate);
   };
 
   const boxBody: JSX.Element = (
@@ -31,7 +29,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ icon, task, deadline }) => {
 
   const boxFooter: JSX.Element = (
     <div className="flex items-center justify-between">
-      <h6 className="text-[#9ba1b0] text-sm">Today</h6>
+      <h6 className="text-[#9ba1b0] text-sm">{deadline}</h6>
       <div
         className={`absolute right-0 bottom-0 bg-[#${
           notificate ? "262626" : "transparent"
