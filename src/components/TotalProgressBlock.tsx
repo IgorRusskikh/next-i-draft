@@ -6,7 +6,7 @@ import { FaRegCheckCircle, FaRegDotCircle } from 'react-icons/fa';
 import { IoShareSocialOutline } from 'react-icons/io5';
 import { TbProgress } from 'react-icons/tb';
 
-import Box from './Box';
+import Box from './layout/Box';
 import ProgressBlockCard from './ProgressBlockCard';
 
 interface TotalProgressBlockProps {

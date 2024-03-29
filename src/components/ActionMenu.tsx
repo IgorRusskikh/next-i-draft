@@ -15,11 +15,11 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ actions }) => {
     <div className="absolute min-w-[12rem] w-fit h-fit bg-[#262626] rounded-2xl z-50">
       <div className="w-full h-full relative">
         <div className="flex flex-col">
-          <ul className="text-white text-md py-2 px-2">
+          <ul className="text-white text-md py-2 px-2 gap-1">
             {actions.map(({ label, actionIcon: Icon, action }) => (
               <li
                 key={label}
-                className="flex justify-between cursor-pointer transition-all px-1 py-2"
+                className=">& flex justify-between cursor-pointer transition-all px-3 py-2 rounded-2xl hover:bg-[#cbcbcb] hover:text-black"
                 onClick={action}
               >
                 {label}

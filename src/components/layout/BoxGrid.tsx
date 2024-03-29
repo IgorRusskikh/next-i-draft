@@ -2,18 +2,18 @@ import { Suspense } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
-import Header from '@/components/Header';
+import Header from '@/components/layout/Header';
+import Sidebar from '@/components/layout/Sidebar';
 import MonthGoalsBlock from '@/components/MonthGoalsBlock';
 import MonthProgressBlock from '@/components/MonthProgressBlock';
-import Sidebar from '@/components/Sidebar';
-import TaskCard from '@/components/TaskCard';
+import TaskCard from '@/components/TaskCard/TaskCard';
 import ProgressBlock from '@/components/TotalProgressBlock';
 import WeeklyProgressBlock from '@/components/WeeklyProgressBlock';
 import formatDeadline from '@/libs/formatDeadline';
 
 const BoxGrid: React.FC = () => {
   return (
-    <div className="w-full h-full py-6 px-5 z-10 backdrop-blur-md   rounded-3xl *:select-none borderborder-white">
+    <div className="w-full h-full py-6 px-5 z-10 backdrop-blur-md   rounded-3xl *:select-none border border-white">
       <div className="flex w-full h-full">
         <div className="w-72">
           <Sidebar />

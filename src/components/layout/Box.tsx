@@ -1,7 +1,7 @@
 import { ReactNode, Suspense } from 'react';
 import { IconType } from 'react-icons';
 
-import IconButton from './IconButton';
+import IconButton from '../IconButton';
 
 interface BoxProps {
   label?: string;

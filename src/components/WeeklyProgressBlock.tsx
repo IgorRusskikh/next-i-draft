@@ -3,7 +3,7 @@
 import React from 'react';
 import { MdOutlineIncompleteCircle } from 'react-icons/md';
 
-import Box from './Box';
+import Box from './layout/Box';
 
 const WeeklyProgressBlock: React.FC = () => {
   const data = [

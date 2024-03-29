@@ -1,6 +1,6 @@
 import { IconType } from 'react-icons';
 
-import Button from './Button';
+import Button from '../Button';
 
 interface Link {
   label: string;
@@ -18,32 +18,16 @@ const SidebarSection: React.FC<SidebarSectionProps> = ({
   arrayLinks,
 }) => {
   return (
-    <nav>
+    <nav className="mb-4">
       {sectionHeader && (
-        <h2
-          className="
-            px-5 
-            text-lg 
-            text-black
-            mb-2
-          "
-        >
-          {sectionHeader}
-        </h2>
+        <h2 className="px-5 text-lg text-black mb-2">{sectionHeader}</h2>
       )}
-      <ul
-        className="
-          flex 
-          flex-col  
-          list-none
-          gap-2
-        "
-      >
+      <ul className="flex flex-col list-none gap-2">
         {arrayLinks.map(({ label, url, icon: Icon }) => (
           <li key={label}>
-            <Button label={label} theme="light">
-              {Icon && <Icon className='mr-2' size={24} />}
-              <span className='text-lg'>{label}</span>
+            <Button theme="light">
+              {Icon && <Icon className="mr-2" size={24} />}
+              <span className="text-lg">{label}</span>
             </Button>
           </li>
         ))}

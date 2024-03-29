@@ -5,7 +5,7 @@ import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 
 import store from '@/app/store';
-import BoxGrid from '@/components/BoxGrid';
+import BoxGrid from '@/components/layout/BoxGrid';
 import ModalAuth from '@/components/ModalAuth';
 
 export default function Home({ pageProps }: AppProps) {
