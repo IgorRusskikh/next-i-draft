@@ -2,12 +2,14 @@ interface IconButtonProps {
   children: JSX.Element;
   theme?: string;
   bg?: boolean;
+  onClick?: () => void;
 }
 
 const IconButton: React.FC<IconButtonProps> = ({
   children: Icon,
   theme = "light",
   bg = false,
+  onClick,
 }) => {
   return (
     <button
@@ -24,6 +26,7 @@ const IconButton: React.FC<IconButtonProps> = ({
         border-transparent
         ${bg ? (theme === "light" ? "bg-black" : "bg-white") : ""}
       `}
+      onClick={onClick}
     >
       {Icon}
     </button>

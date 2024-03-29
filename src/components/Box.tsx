@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import { IconType } from 'react-icons';
 
 import IconButton from './IconButton';
@@ -24,7 +24,7 @@ const Box: React.FC<BoxProps> = ({
 }) => {
   return (
     <div
-      className={`w-full h-full rounded-3xl bg-[#262626] px-7 py-6 flex flex-col relative overflow-hidden shadow-xl
+      className={`w-full h-full rounded-3xl bg-[#262626] px-7 py-6 flex flex-col relative shadow-xl
       ${theme !== "dark" ? "text-black" : "text-white"}
       ${theme === "light" ? "bg-[#fcfcfc]" : ""} 
       ${theme === "dark" ? "bg-[#262626]" : ""}
@@ -65,7 +65,11 @@ const Box: React.FC<BoxProps> = ({
       )}
 
       {/* BOX BODY */}
-      {BoxBody && <div className={`w-full h-full relative`}>{BoxBody}</div>}
+      {BoxBody && (
+        <Suspense>
+          <div className={`w-full h-full relative`}>{BoxBody}</div>
+        </Suspense>
+      )}
 
       {/* BOX FOOTER */}
       {BoxFooter && <div className="w-full">{BoxFooter}</div>}

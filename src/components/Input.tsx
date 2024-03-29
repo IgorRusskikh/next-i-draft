@@ -24,7 +24,7 @@ const Input: React.FC<InputProps> = ({
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
         type={type || "text"}
-        className="bg-transparent outline-none text-2xl pb-2 pt-1 px-4 border-b-2 border-b-white relative"
+        className="bg-transparent outline-none text-2xl text-white pb-2 pt-1 px-4 border-b-2 border-b-white relative placeholder:text-white"
       />
     </div>
   );

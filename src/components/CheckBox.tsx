@@ -17,7 +17,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({ optionList }) => {
   useEffect(() => {
     if (optionList) {
       const initialOptions = optionList.map((option, index) => ({
-        id: index + 1,
+        id: index,
         label: option,
         checked: false,
       }));

@@ -1,11 +1,19 @@
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaRegUser } from 'react-icons/fa';
 import { IoSearchOutline } from 'react-icons/io5';
 import { RiNotification2Line } from 'react-icons/ri';
+import { useDispatch } from 'react-redux';
+
+import { setModal } from '@/features/modal/modalSlice';
+import useCurrentUser from '@/hooks/useCurrentUser';
 
 import Button from './Button';
 import IconButton from './IconButton';
 
 const Header: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const currentUser = useCurrentUser()?.data?.user;
+
   return (
     <div
       className="
@@ -23,7 +31,7 @@ const Header: React.FC = () => {
           pt-3
         "
       >
-        Hi, Dilan!
+        Hi, {currentUser && currentUser.username}!
       </h1>
       <div
         className="
@@ -47,6 +55,21 @@ const Header: React.FC = () => {
             <RiNotification2Line size={24} />
           </IconButton>
         </div>
+        {currentUser ? (
+          <IconButton theme="light" bg={true}>
+            <FaRegUser size={24} color="white" />
+          </IconButton>
+        ) : (
+          <Button
+            rounded="rounded-full"
+            onClick={() => dispatch(setModal(true))}
+          >
+            <div className="flex items-center justify-center gap-2 px-5">
+              <FaPlus />
+              <span>Authorize</span>
+            </div>
+          </Button>
+        )}
       </div>
     </div>
   );

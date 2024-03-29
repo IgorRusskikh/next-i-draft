@@ -4,28 +4,19 @@ import { NextRequest } from 'next/server';
 import prisma from '@/libs/prisma';
 
 export async function POST(req: NextRequest) {
-  if (req.method !== "POST") {
-    return Response.json(
-      {},
-      {
-        status: 413,
-      }
-    );
-  }
-
   try {
     const { username, email, password } = await req.json();
 
     const isUserExists = await prisma.user.findUnique({
       where: {
-        username,
+        email,
       },
     });
 
     if (isUserExists) {
       return Response.json(
         {
-          message: "Username is already taken",
+          message: "Email is already taken",
         },
         {
           status: 400,
@@ -42,7 +33,7 @@ export async function POST(req: NextRequest) {
       data: {
         username,
         email,
-        password: await bcrypt.hash(password, salt),
+        passwordHash: await bcrypt.hash(password, salt),
       },
     });
 

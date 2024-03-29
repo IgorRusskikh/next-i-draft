@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import NextAuth, { AuthOptions } from 'next-auth';
+import NextAuth, { AuthOptions, getServerSession } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 import prisma from '@/libs/prisma';
@@ -17,21 +17,20 @@ export const authOptions: AuthOptions = {
           throw new Error("Invalid credentials");
         }
 
-        console.log(credentials);
-
         const user = await prisma.user.findUnique({
           where: {
-            username: credentials.username,
+            username: credentials.username, // Include username in the where clause
           },
         });
 
-        if (!user || !user.password) {
+        if (!user || !user.passwordHash) {
           throw new Error("Invalid credentials");
         }
 
-        const valid = await bcrypt.compare(credentials.password, user.password);
-
-        console.log(valid);
+        const valid = await bcrypt.compare(
+          credentials.password,
+          user.passwordHash
+        );
 
         if (!valid) {
           throw new Error("Invalid credentials");
@@ -41,6 +40,14 @@ export const authOptions: AuthOptions = {
       },
     }),
   ],
+  callbacks: {
+    session: async ({ session, token }) => {
+      if (session?.user) {
+        session.user.id = token.sub;
+      }
+      return session;
+    },
+  },
   session: {
     strategy: "jwt",
   },
@@ -51,5 +58,7 @@ export const authOptions: AuthOptions = {
 };
 
 const handler = NextAuth(authOptions);
+
+export const getServerAuthSession = () => getServerSession(authOptions);
 
 export { handler as GET, handler as POST };

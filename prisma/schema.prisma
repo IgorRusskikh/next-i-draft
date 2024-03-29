@@ -8,10 +8,37 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId()
-  username  String   @unique
-  email     String?  @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId()
+  username     String   @unique
+  email        String?  @unique
+  imageLink    String?
+  name         String?
+  surname      String?
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  tasks Task[]
+}
+
+model TaskState {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId()
+  state String
+
+  tasks Task[]
+}
+
+model Task {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId()
+  userId    String    @db.ObjectId()
+  title     String
+  content   String?
+  monthGoal Boolean?  @default(false)
+  state     String    @db.ObjectId()
+  deadline  DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  user      User      @relation(fields: [userId], references: [id])
+  taskState TaskState @relation(fields: [state], references: [id])
 }
