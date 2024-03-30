@@ -8,9 +8,10 @@ interface Action {
 
 interface ActionMenuProps {
   actions: Action[];
+  direction?: string;
 }
 
-const ActionMenu: React.FC<ActionMenuProps> = ({ actions }) => {
+const ActionMenu: React.FC<ActionMenuProps> = ({ actions, direction }) => {
   return (
     <div className="absolute min-w-[12rem] w-fit h-fit bg-[#262626] rounded-2xl z-50">
       <div className="w-full h-full relative">
@@ -32,7 +33,11 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ actions }) => {
             ))}
           </ul>
         </div>
-        <div className="absolute bottom-0 w-full -z-10 flex justify-center">
+        <div
+          className={`absolute ${
+            direction || "bottom"
+          }-0 w-full -z-10 flex justify-center`}
+        >
           <div className="bg-[#262626] w-10 h-10 rotate-45"></div>
         </div>
       </div>

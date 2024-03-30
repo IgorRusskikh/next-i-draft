@@ -31,7 +31,7 @@ const ModalAuth: React.FC = () => {
     }
   }, [username, password]);
 
-  const register = useCallback(async () => {
+  const register = async () => {
     try {
       const response = await fetch("/api/auth/register", {
         method: "POST",
@@ -39,17 +39,19 @@ const ModalAuth: React.FC = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: username,
-          email: email,
-          password: password,
+          username,
+          email,
+          password,
         }),
       });
 
-      login();
+      if (response.status === 200) {
+        login();
+      }
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  };
 
   const toggleVariant = () => {
     setAuthVariant(authVariant === "register" ? "login" : "register");

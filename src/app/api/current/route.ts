@@ -8,7 +8,14 @@ export async function GET(
 ) {
   const session = await getServerAuthSession();
 
-  console.log(session);
+  if (!session) {
+    return Response.json(
+      {},
+      {
+        status: 404,
+      }
+    );
+  }
 
   try {
     const user = await prisma.user.findUnique({
