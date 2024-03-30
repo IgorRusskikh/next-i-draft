@@ -4,10 +4,10 @@ import { CgProfile } from 'react-icons/cg';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Input from '@/components/Input';
+import Input from '@/components/ui/Input';
 import { setModal } from '@/features/modal/modalSlice';
 
-import Button from './Button';
+import Button from '../ui/Button';
 
 const ModalAuth: React.FC = () => {
   const [username, setUsername] = useState("");

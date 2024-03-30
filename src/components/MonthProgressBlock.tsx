@@ -7,9 +7,9 @@ import { BsGraphUpArrow } from 'react-icons/bs';
 import { FiDownload } from 'react-icons/fi';
 import { IoShareSocialOutline } from 'react-icons/io5';
 
-import Button from './Button';
 import IconButton from './IconButton';
 import Box from './layout/Box';
+import Button from './ui/Button';
 
 const MonthProgressBlock: React.FC = () => {
   const boxBody: JSX.Element = (

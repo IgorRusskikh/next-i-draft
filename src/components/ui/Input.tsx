@@ -24,7 +24,12 @@ const Input: React.FC<InputProps> = ({
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
         type={type || "text"}
-        className="bg-transparent outline-none text-2xl text-white pb-2 pt-1 px-4 border-b-2 border-b-white relative placeholder:text-white"
+        className={`
+          bg-transparent outline-none text-xl text-black pb-2 pt-1 px-4
+          border-b-2 border-b-black-400 relative placeholder:text-black-400
+          focus:border-b-black focus:placeholder:opacity-0
+          placeholder:transition-all transition-all w-full
+        `}
       />
     </div>
   );

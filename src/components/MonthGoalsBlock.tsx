@@ -3,9 +3,9 @@
 import { CircularProgressbar } from 'react-circular-progressbar';
 import { GoPencil } from 'react-icons/go';
 
-import CheckBox from './CheckBox';
 import IconButton from './IconButton';
 import Box from './layout/Box';
+import CheckBox from './ui/CheckBox';
 
 const MonthGoalsBlock: React.FC = () => {
   const customHeader: JSX.Element = (

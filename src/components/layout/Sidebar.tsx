@@ -5,7 +5,7 @@ import { ImStatsDots } from 'react-icons/im';
 import { IoMdCalendar } from 'react-icons/io';
 import { MdDashboard } from 'react-icons/md';
 
-import Button from '../Button';
+import Button from '../ui/Button';
 import SidebarSection from './SidebarSection';
 
 interface Link {

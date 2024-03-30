@@ -1,6 +1,6 @@
 import { IconType } from 'react-icons';
 
-import Button from '../Button';
+import Button from '../ui/Button';
 
 interface Link {
   label: string;

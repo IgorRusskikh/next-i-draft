@@ -54,14 +54,14 @@ const BoxGrid: React.FC = () => {
                       <div
                         key={index}
                         className={`w-[16.7rem] h-[16.7rem] transition-all delay-0 ${
-                          formatDeadline("25.03.2024") === "Today"
+                          formatDeadline("29.03.2024") === "Today"
                             ? "animate-rotate-card"
                             : ""
                         }`}
                       >
                         <TaskCard
                           task="Buy Susan a gift for Birthday"
-                          deadline={formatDeadline("24.03.2024")}
+                          deadline={formatDeadline("29.03.2024")}
                         />
                       </div>
                     );

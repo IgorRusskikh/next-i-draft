@@ -6,8 +6,8 @@ import { useDispatch } from 'react-redux';
 import { setModal } from '@/features/modal/modalSlice';
 import useCurrentUser from '@/hooks/useCurrentUser';
 
-import Button from '../Button';
 import IconButton from '../IconButton';
+import Button from '../ui/Button';
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
