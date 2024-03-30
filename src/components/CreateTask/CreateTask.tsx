@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { IconType } from 'react-icons';
 import { FaRegCheckCircle } from 'react-icons/fa';
 import { TbProgress } from 'react-icons/tb';
+import { useDispatch, useSelector } from 'react-redux';
 
-import ModalWindow from '../Modals/ModalWindow';
+import { setModal } from '@/features/modalCreateTask/modalCreateTaskSlice';
+
+import ModalWindow from '../Modals/Modal';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import Select from '../ui/Select';
@@ -19,6 +22,12 @@ const CreateTask: React.FC = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+
+  const dispatch = useDispatch();
+
+  const isOpen = useSelector((state) => state.modalCreateTask);
+
+  console.log(isOpen)
 
   const modalBody = (
     <div className="flex flex-col gap-10 w-full">
@@ -67,7 +76,14 @@ const CreateTask: React.FC = () => {
     </div>
   );
 
-  return <ModalWindow title="Create new task" body={modalBody} />;
+  return (
+    <ModalWindow
+      isOpen={isOpen.value}
+      onClose={() => dispatch(setModal(false))}
+      title="Create new task"
+      body={modalBody}
+    />
+  );
 };
 
 export default CreateTask;

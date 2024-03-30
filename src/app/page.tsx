@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 
 import store from '@/app/store';
 import CreateTask from '@/components/CreateTask/CreateTask';
-import BoxGrid from '@/components/layout/BoxGrid';
+import Dashboard from '@/components/layout/Dashboard';
 import ModalAuth from '@/components/Modals/ModalAuth';
 
 export default function Home({ pageProps }: AppProps) {
@@ -15,7 +15,7 @@ export default function Home({ pageProps }: AppProps) {
       <Provider store={store}>
         <CreateTask />
         <ModalAuth />
-        <BoxGrid />
+        <Dashboard />
       </Provider>
     </SessionProvider>
   );
