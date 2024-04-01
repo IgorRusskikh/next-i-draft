@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { IconType } from 'react-icons';
-import { FaList } from 'react-icons/fa';
 
 interface Option {
   label: string;
@@ -8,40 +7,47 @@ interface Option {
 }
 
 interface SelectProps {
+  defaultLabel?: string;
+  defaultIcon?: IconType;
   options: Option[];
   selectedOption: Option | null;
   setSelectedOption: (option: Option) => void;
+  theme?: string;
 }
 
 const Select: React.FC<SelectProps> = ({
+  defaultLabel,
+  defaultIcon: Icon,
   options,
   selectedOption,
   setSelectedOption,
+  theme = "light",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="w-full relative">
       <div
-        className="w-full border-2 rounded-xl py-2 px-3"
+        className={`w-full rounded-xl py-2 px-3 ${theme === "white" ? "border-2 border-white" : ""
+          } ${theme === "dark" ? "border-2 border-[#262626]" : ""}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="flex justify-between items-center cursor-pointer">
           <h3 className="text-xl">
-            {selectedOption ? selectedOption.label : "Status"}
+            {selectedOption ? selectedOption.label : defaultLabel ? defaultLabel : "Select"}
           </h3>
           {selectedOption?.icon ? (
-            <selectedOption.icon size={20} />
+            <selectedOption.icon size={20} className='ml-2' />
           ) : (
-            <FaList size={20} />
+            Icon && <Icon size={20} className='ml-2' />
           )}
         </div>
         <div
-          className={`absolute border min-w-[10rem] left-0 rounded-xl transition-all overflow-hidden py-2 bg-white w-full ${
-            isOpen
-              ? "translate-y-5 animate-fade-in"
-              : "translate-y-2 animate-fade-out"
-          }`}
+          className={`absolute z-20 border min-w-[10rem] left-0 rounded-xl transition-all overflow-hidden py-2 w-full
+            ${isOpen ? "translate-y-5 animate-fade-in" : "translate-y-2 animate-fade-out"}
+            ${theme === "light" ? "bg-white text-black" : ""}
+            ${theme === "dark" ? "bg-[#262626] text-white" : ""}
+            ${theme === "transparent" ? "bg-white text-black" : ""}`}
         >
           <ul className="flex flex-col">
             {options.map((option) => (

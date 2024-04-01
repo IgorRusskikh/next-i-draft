@@ -19,7 +19,7 @@ const Header: React.FC = () => {
 
   const dispatch = useDispatch();
 
-  const currentUser = useCurrentUser()?.data?.user;
+  const currentUser = useCurrentUser()?.data?.currentUser;
 
   const ref = useDetectClickOutside({
     onTriggered: () => {
@@ -62,9 +62,8 @@ const Header: React.FC = () => {
                 <FaRegUser size={24} color="white" />
               </IconButton>
               <div
-                className={`absolute right-[240%] bottom-[-20%] z-20 transition-all ${
-                  showActions ? "animate-fade-in" : " animate-fade-out"
-                }`}
+                className={`absolute right-[240%] bottom-[-20%] z-50 transition-all ${showActions ? "animate-fade-in" : " animate-fade-out"
+                  }`}
                 ref={ref}
               >
                 <ActionMenu actions={userActions} direction="top" />
@@ -79,7 +78,7 @@ const Header: React.FC = () => {
   return (
     <div className="w-full flex justify-between">
       <h1 className="text-4xl font-bold flex items-end pt-3">
-        Hi, {currentUser && currentUser.username}!
+        Hi, {currentUser ? currentUser.username : "Guest"}!
       </h1>
       <div className="flex text-md gap-5 pb-5">
         <Button rounded="rounded-full">

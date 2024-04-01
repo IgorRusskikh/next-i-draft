@@ -3,15 +3,27 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 0;
+  visibility: hidden;
+  /* width: 8px;
+  z-index: 0;
+  position: absolute; */
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #262626;
+  visibility: hidden;
+  /* background-color: #262626;
   border-radius: 4px;
+  z-index: 0;
+  position: absolute;
+  padding-left: 100px; */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #cbcbcb;
+  visibility: hidden;
+  /* background-color: #cbcbcb;
+  cursor: pointer;
   border-radius: 4px;
+  z-index: 0;
+  position: absolute; */
 }

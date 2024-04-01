@@ -1,40 +1,14 @@
-import prisma from '@/libs/prisma';
-
-import { getServerAuthSession } from '../auth/[...nextauth]/route';
+import serverAuth from '@/libs/serverAuth';
 
 export async function GET(
   req: Request,
   { params }: { params: { id: string } }
 ) {
-  const session = await getServerAuthSession();
-
-  if (!session) {
-    return Response.json(
-      {},
-      {
-        status: 404,
-      }
-    );
-  }
-
   try {
-    const user = await prisma.user.findUnique({
-      where: {
-        id: session?.user.id,
-      },
-    });
-
-    if (!user) {
-      return Response.json(
-        {},
-        {
-          status: 404,
-        }
-      );
-    }
+    const { currentUser } = await serverAuth(req);
 
     return Response.json({
-      user,
+      currentUser,
     });
   } catch (error) {
     console.log(error);
