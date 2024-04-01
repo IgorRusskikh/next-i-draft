@@ -1,10 +1,10 @@
-import modalSlice from '@/features/modal/modalSlice';
+import modalAuthSlice from '@/features/modalAuth/modalAuthSlice';
 import modalCreateTaskSlice from '@/features/modalCreateTask/modalCreateTaskSlice';
 import { configureStore } from '@reduxjs/toolkit';
 
 export default configureStore({
   reducer: {
-    modal: modalSlice,
+    modalAuth: modalAuthSlice,
     modalCreateTask: modalCreateTaskSlice,
   },
 });

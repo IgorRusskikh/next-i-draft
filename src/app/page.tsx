@@ -5,9 +5,9 @@ import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 
 import store from '@/app/store';
-import CreateTask from '@/components/CreateTask/CreateTask';
 import Dashboard from '@/components/layout/Dashboard';
 import ModalAuth from '@/components/Modals/ModalAuth';
+import CreateTask from '@/components/Modals/ModalCreateTask';
 
 export default function Home({ pageProps }: AppProps) {
   return (

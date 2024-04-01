@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setModal } from '@/features/modalCreateTask/modalCreateTaskSlice';
 
-import ModalWindow from '../Modals/Modal';
+import ModalWindow from '../layout/Modal';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import Select from '../ui/Select';
@@ -26,8 +26,6 @@ const CreateTask: React.FC = () => {
   const dispatch = useDispatch();
 
   const isOpen = useSelector((state) => state.modalCreateTask);
-
-  console.log(isOpen)
 
   const modalBody = (
     <div className="flex flex-col gap-10 w-full">

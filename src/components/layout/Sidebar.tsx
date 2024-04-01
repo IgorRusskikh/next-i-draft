@@ -11,7 +11,7 @@ import SidebarSection from './SidebarSection';
 interface Link {
   label: string;
   url: string;
-  icon?: IconType | undefined;
+  icon?: IconType;
 }
 
 const Sidebar: React.FC = () => {
@@ -39,58 +39,29 @@ const Sidebar: React.FC = () => {
   ];
 
   return (
-    <div
-      className="
-        bg-white 
-        w-[18rem]
-        h-full 
-        rounded-3xl
-        flex
-        flex-col
-        py-5
-        shadow-xl
-      "
-    >
-      <div
-        className="
-          w-full
-          flex
-          justify-center
-          items-center
-        "
-      >
-        <h1
-          className="
-            text-4xl 
-            font-semibold
-          "
-        >
-          iDraft
-        </h1>
+    <div className="bg-white w-[18rem] h-full rounded-3xl flex flex-col py-5 shadow-xl">
+      <div className="w-full flex justify-center items-center">
+        <h1 className="text-4xl font-semibold">iDraft</h1>
       </div>
-      <div className="mt-8">
-        <div className="px-7">
-          <div>
-            <SidebarSection arrayLinks={arrayLinks} />
-          </div>
-          <div className="mt-6">
-            <SidebarSection
-              sectionHeader="INTEGRATIONS"
-              arrayLinks={arrayLinks.slice(0, 3)}
-            />
-          </div>
-          <div className="mt-6">
-            <SidebarSection
-              sectionHeader="INTEGRATIONS"
-              arrayLinks={arrayLinks.slice(0, 2)}
-            />
-          </div>
-          <div className="mt-8">
-            <Button theme="light" icon={FiSettings}>
-              <FiSettings className="mr-2" size={24} />
-              <span>Settigns</span>
-            </Button>
-          </div>
+      <div className="mt-8 px-7">
+        <SidebarSection arrayLinks={arrayLinks} />
+        <div className="mt-6">
+          <SidebarSection
+            sectionHeader="INTEGRATIONS"
+            arrayLinks={arrayLinks.slice(0, 3)}
+          />
+        </div>
+        <div className="mt-6">
+          <SidebarSection
+            sectionHeader="INTEGRATIONS"
+            arrayLinks={arrayLinks.slice(0, 2)}
+          />
+        </div>
+        <div className="mt-8">
+          <Button theme="light">
+            <FiSettings className="mr-2" size={24} />
+            <span>Settings</span>
+          </Button>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { FaPlus } from 'react-icons/fa';
 import { MdKeyboardArrowRight } from 'react-icons/md';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import MonthGoalsBlock from '@/components/MonthGoalsBlock';
 import TaskCard from '@/components/TaskCard/TaskCard';
@@ -9,8 +9,6 @@ import formatDeadline from '@/libs/formatDeadline';
 
 const TaskOverview: React.FC = () => {
   const dispatch = useDispatch();
-
-  const createTaskModal = useSelector((state) => state.modalCreateTask.value);
 
   return (
     <div className="flex gap-10">

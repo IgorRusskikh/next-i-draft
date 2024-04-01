@@ -7,7 +7,7 @@ import { PiSignOut } from 'react-icons/pi';
 import { RiNotification2Line } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
 
-import { setModal } from '@/features/modal/modalSlice';
+import { setModal } from '@/features/modalAuth/modalAuthSlice';
 import useCurrentUser from '@/hooks/useCurrentUser';
 
 import ActionMenu from '../ActionMenu';
