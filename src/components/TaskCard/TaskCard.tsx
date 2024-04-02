@@ -1,24 +1,19 @@
-import { IconType } from 'react-icons';
-
 import Box from '../layout/Box';
-import TaskCardBody from './TaskCardBody';
-import TaskCardFooter from './TaskCardFooter';
-import TaskCardHeader from './TaskCardHeader';
+import TaskBody from './TaskBody';
+import TaskHeader from './TaskHeader';
 
 interface TaskCardProps {
-  icon?: IconType;
-  task: string;
-  deadline: string;
+  title: string;
+  content?: string;
+  status: string;
 }
 
-const TaskCard: React.FC<TaskCardProps> = ({ icon, task, deadline }) => {
+const TaskCard: React.FC<TaskCardProps> = ({ title, content, status }) => {
   return (
     <Box
-      customBoxHeader={<TaskCardHeader icon={icon} />}
-      boxBody={<TaskCardBody task={task} />}
-      boxFooter={<TaskCardFooter deadline={deadline} />}
-    />
-  );
-};
+      customBoxHeader={<TaskHeader>{title}</TaskHeader>}
+      boxBody={<TaskBody status={status}>{content}</TaskBody>} theme='dark' />
+  )
+}
 
 export default TaskCard;

@@ -2,8 +2,8 @@ import { FaPlus } from 'react-icons/fa';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 
+import TaskCard from '@/components/DashboardTask/TaskCard';
 import MonthGoalsBlock from '@/components/MonthGoalsBlock';
-import TaskCard from '@/components/TaskCard/TaskCard';
 import { setModal } from '@/features/modalCreateTask/modalCreateTaskSlice';
 import formatDeadline from '@/libs/formatDeadline';
 

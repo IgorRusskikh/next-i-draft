@@ -4,8 +4,8 @@ import Header from '@/components/layout/Header';
 import Sidebar from '@/components/layout/Sidebar';
 
 import DashboardOverview from './DashboardOverview';
-import TaskListSection from './TaskListSection';
 import TaskOverview from './TaskOverview';
+import TaskListSection from './TaskSection/TaskListSection';
 
 const Dashboard: React.FC = () => {
   return (

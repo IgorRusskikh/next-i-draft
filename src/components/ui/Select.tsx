@@ -28,7 +28,7 @@ const Select: React.FC<SelectProps> = ({
   return (
     <div className="w-full relative">
       <div
-        className={`w-full rounded-xl py-2 px-3 ${theme === "white" ? "border-2 border-white" : ""
+        className={`w-full rounded-xl py-2 px-3 ${theme === "light" ? "border border-black" : ""
           } ${theme === "dark" ? "border-2 border-[#262626]" : ""}`}
         onClick={() => setIsOpen(!isOpen)}
       >

@@ -18,14 +18,34 @@ interface Option {
 
 const CreateTask: React.FC = () => {
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [content, setContent] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+  const [state, setState] = useState<Option | null>(null);
 
   const dispatch = useDispatch();
 
   const isOpen = useSelector((state) => state.modalCreateTask);
+
+  const createTask = async () => {
+    console.log(state?.label)
+
+
+    const response = await fetch('/api/tasks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title,
+        content,
+        startDate,
+        monthGoal: false,
+        deadline: endDate,
+        state: state?.label
+      })
+    })
+  }
 
   const modalBody = (
     <div className="flex flex-col gap-10 w-full">
@@ -35,8 +55,8 @@ const CreateTask: React.FC = () => {
       <div className="w-full">
         <Input
           placeholder="Description task"
-          value={description}
-          setValue={setDescription}
+          value={content}
+          setValue={setContent}
         />
       </div>
       <div className="flex justify-between gap-10 w-full">
@@ -61,13 +81,15 @@ const CreateTask: React.FC = () => {
               { label: "In progress", icon: TbProgress },
               { label: "Complete", icon: FaRegCheckCircle },
             ]}
-            selectedOption={selectedOption}
-            setSelectedOption={setSelectedOption}
+            selectedOption={state}
+            setSelectedOption={setState}
+            defaultLabel='Status'
+            theme='light'
           />
         </div>
       </div>
       <div className="mt-10 flex">
-        <Button>
+        <Button onClick={createTask}>
           <div className="w-full flex justify-center">Add task</div>
         </Button>
       </div>
