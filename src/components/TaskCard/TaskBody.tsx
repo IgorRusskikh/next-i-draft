@@ -4,7 +4,7 @@ const TaskBody: React.FC<{ status: string; children?: string }> = ({ status, chi
     return (
       <div className="w-full flex flex-col mt-3 text-lg">
         <div className="flex gap-3 items-center">
-          <div className="w-[8px] h-[8px] rounded-full bg-green-400"></div>
+          <div className={`w-[8px] h-[8px] rounded-full ${status === "In progress" ? "bg-yellow-400" : ""} ${status === "Complete" ? "bg-red-400" : ""}`}></div>
           <h4 className="text-[#858a96]">{status}</h4>
         </div>
         <div className="mt-3">
@@ -19,7 +19,7 @@ const TaskBody: React.FC<{ status: string; children?: string }> = ({ status, chi
   return (
     <div className="w-full flex flex-col mt-3 text-lg">
       <div className="flex gap-3 items-center">
-        <div className="w-[8px] h-[8px] rounded-full bg-green-400"></div>
+        <div className={`w-[8px] h-[8px] rounded-full ${status === "In progress" ? "bg-yellow-400" : ""} ${status === "Complete" ? "bg-green-400" : ""}`}></div>
         <h4 className="text-[#858a96]">{status}</h4>
       </div>
     </div>
