@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
@@ -13,7 +14,9 @@ const TaskOverview: React.FC = () => {
   return (
     <div className="flex gap-10">
       <div className="min-w-[28rem] h-[21rem] my-4">
-        <MonthGoalsBlock />
+        <Suspense>
+          <MonthGoalsBlock />
+        </Suspense>
       </div>
       <div className="flex flex-col w-full my-4">
         <div className="flex justify-between w-full">
@@ -28,11 +31,10 @@ const TaskOverview: React.FC = () => {
             return (
               <div
                 key={index}
-                className={`w-[16.7rem] h-[16.7rem] transition-all delay-0 ${
-                  formatDeadline("29.03.2024") === "Today"
+                className={`w-[16.7rem] h-[16.7rem] transition-all delay-0 ${formatDeadline("29.03.2024") === "Today"
                     ? "animate-rotate-card"
                     : ""
-                }`}
+                  }`}
               >
                 <TaskCard
                   task="Buy Susan a gift for Birthday"

@@ -2,6 +2,7 @@
 
 import { SessionProvider } from 'next-auth/react';
 import { AppProps } from 'next/app';
+import { Suspense } from 'react';
 import { Provider } from 'react-redux';
 
 import store from '@/app/store';
@@ -13,8 +14,12 @@ export default function Home({ pageProps }: AppProps) {
   return (
     <SessionProvider session={pageProps?.session}>
       <Provider store={store}>
-        <CreateTask />
-        <ModalAuth />
+        <Suspense>
+          <CreateTask />
+        </Suspense>
+        <Suspense>
+          <ModalAuth />
+        </Suspense>
         <Dashboard />
       </Provider>
     </SessionProvider>

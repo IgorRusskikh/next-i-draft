@@ -7,7 +7,7 @@ import TaskList from './TaskList';
 
 const TaskListSection: React.FC = () => {
   return (
-    <div className="w-full flex flex-col mt-5">
+    <div className="w-full flex flex-col mt-5 pb-3">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-semibold">Last Projects</h2>
         <div className="flex items-center gap-5">

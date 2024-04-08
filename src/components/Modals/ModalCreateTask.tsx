@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { IconType } from 'react-icons';
 import { FaRegCheckCircle } from 'react-icons/fa';
 import { TbProgress } from 'react-icons/tb';
@@ -19,6 +19,7 @@ interface Option {
 const CreateTask: React.FC = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [subtasks, setSubtasks] = useState([{}]);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [state, setState] = useState<Option | null>(null);
@@ -27,10 +28,11 @@ const CreateTask: React.FC = () => {
 
   const isOpen = useSelector((state) => state.modalCreateTask);
 
-  const createTask = async () => {
-    console.log(state?.label)
+  useEffect(() => {
+    console.log(subtasks)
+  }, [subtasks])
 
-
+  const createTask = useCallback(async () => {
     const response = await fetch('/api/tasks', {
       method: 'POST',
       headers: {
@@ -45,7 +47,7 @@ const CreateTask: React.FC = () => {
         state: state?.label
       })
     })
-  }
+  }, [])
 
   const modalBody = (
     <div className="flex flex-col gap-10 w-full">
@@ -58,6 +60,28 @@ const CreateTask: React.FC = () => {
           value={content}
           setValue={setContent}
         />
+      </div>
+      <div className="w-full">
+        <h4 className='text-center text-xl'>Subtasks</h4>
+        <ul className='flex flex-col gap-5 max-h-[13rem] overflow-y-scroll'>
+          {subtasks.map((subtask, index) => (
+            <li key={index} className='flex items-center gap-5'>
+              <h4 className='text-xl'>{index + 1}.</h4>
+              <Input
+                placeholder={`Subtask ${index + 1}...`}
+              />
+            </li>
+          ))}
+        </ul>
+        <div className='flex justify-center mt-5'>
+          <div className='w-[10rem]'>
+            <Button onClick={() => setSubtasks([...subtasks, ""])}>
+              <div className='flex justify-center w-full'>
+                Add subtask
+              </div>
+            </Button>
+          </div>
+        </div>
       </div>
       <div className="flex justify-between gap-10 w-full">
         <div className="w-full">
@@ -88,7 +112,7 @@ const CreateTask: React.FC = () => {
           />
         </div>
       </div>
-      <div className="mt-10 flex">
+      <div className="mt-5 flex">
         <Button onClick={createTask}>
           <div className="w-full flex justify-center">Add task</div>
         </Button>

@@ -2,15 +2,18 @@ import { Suspense } from 'react';
 
 import Header from '@/components/layout/Header';
 import Sidebar from '@/components/layout/Sidebar';
+import useCurrentUser from '@/hooks/useCurrentUser';
 
 import DashboardOverview from './DashboardOverview';
 import TaskOverview from './TaskOverview';
 import TaskListSection from './TaskSection/TaskListSection';
 
 const Dashboard: React.FC = () => {
+  const currentUser = useCurrentUser()?.data?.currentUser;
+
   return (
     <div className="w-full h-full py-5 px-5 z-10 backdrop-blur-md   rounded-3xl *:select-none border border-white">
-      <div className="flex w-full h-full overflow-hidden overflow-x-hidden overflow-y-scroll">
+      <div className={`flex w-full h-full overflow-hidden overflow-x-hidden ${currentUser ? "overflow-y-scroll" : ""}`}>
         <div className="w-80 fixed">
           <Sidebar />
         </div>
@@ -26,7 +29,7 @@ const Dashboard: React.FC = () => {
               <TaskOverview />
             </Suspense>
           </div>
-          <TaskListSection />
+          {currentUser && <TaskListSection />}
         </div>
       </div>
     </div>

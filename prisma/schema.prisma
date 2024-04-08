@@ -33,6 +33,7 @@ model Task {
   userId    String    @db.ObjectId()
   title     String
   content   String?
+  subtasks  Json[]
   monthGoal Boolean?  @default(false)
   state     String    @db.ObjectId()
   deadline  DateTime?
